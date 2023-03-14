@@ -1,4 +1,8 @@
 <?php
+
+// Edit 2023 CW
+// No edits needed for 8.2
+
 // This file is part of Olam Autoresponder.
 // Copyright (c) 2004-2007 Aaron Colman and Adaptive Business Design.
 // Copyright (c) 2016 Anna Burdette, Benjamin Jobson, and David Reed.
@@ -21,17 +25,17 @@ include('templates/open.page.php');
 $Responder_ID = makeSafe($_REQUEST['r_ID']);
 $action = makeSafe(@$_REQUEST['action']);
 
-# ----------------------------------------------------------------------------------
-# Anti-spam phrase. It's added to the end of all email addressed to make it more
-# difficult for spammers to harvest the addresses.
-# $antispam = "";      # To disable anti-spam.
-#
+// ----------------------------------------------------------------------------------
+// Anti-spam phrase. It's added to the end of all email addressed to make it more
+// difficult for spammers to harvest the addresses.
+// $antispam = "";      # To disable anti-spam.
+//
 $antispam = "@nospam";
-#
-# ----------------------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------------------
 
 if ($action == "subscribe") {
-    # --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
     print "<br><font color=\"#000066\">\n";
     print "<center>\n";
     print "<table cellspacing=\"10\" bgcolor=\"#CCCCCC\" style=\"border: 1px solid #000000;\"><tr><td>\n";
@@ -51,7 +55,7 @@ if ($action == "subscribe") {
     print "</font></form>\n";
     print "</td></tr></table>\n";
     print "</center>\n";
-    # --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
     print "<br><br>\n";
     print "<strong>Back to Responder List.</strong><br>\n";
     print "<FORM action=\"list.php\" method=POST> \n";
@@ -59,7 +63,7 @@ if ($action == "subscribe") {
     print "<input type=\"submit\" name=\"Back\" value=\"<< Back\" alt=\"<< Back\">  \n";
     print "</FORM> \n";
     print "</font>\n";
-    # --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
 } else {
     $query = "SELECT * FROM InfResp_responders ORDER BY ResponderID";
     $DB_result = $DB->query($query)
@@ -87,12 +91,12 @@ if ($action == "subscribe") {
             $DB_OptOutDisplay = $query_result['OptOutDisplay'];
             $DB_NotifyOnSub = $query_result['NotifyOwnerOnSub'];
 
-            # Show responder row
+            // Show responder row
             include('templates/list.list.php');
         }
     }
 }
 
-# Template bottom
+// Template bottom
 copyright();
 include('templates/close.page.php');
