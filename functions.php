@@ -18,6 +18,13 @@
 require_once 'password.php';
 require_once 'evilness-filter.php';
 
+// PHP 8.1 deprecated passing null to string parameters. This function is used in getResponderInfo() and processMessageTags().
+function nullToString($thing) {
+    if (is_null($thing)) {
+        $thing = "";
+    }
+}
+
 // Truncates a string at the given word count
 //   Example: cutString("EAT MOR CHIKIN", 2); // => EAT MOR...
 function cutString($string, $word_limit)
@@ -275,7 +282,7 @@ function getResponderInfo()
         $DB_OptInDisplay = $result_data['OptInDisplay'];
         $DB_OptOutDisplay = $result_data['OptOutDisplay'];
         $DB_NotifyOnSub = $result_data['NotifyOwnerOnSub'];
-        $DB_StartDate = DateTime::createFromFormat('Y-m-d', $result_data['StartDate']);
+        $DB_StartDate = DateTime::createFromFormat('Y-m-d', nullToString($result_data['StartDate']));
         if ($DB_StartDate) {
             $DB_StartDate = $DB_StartDate->setTime(0, 0, 0)->format('Y-m-d');
         } else {
@@ -406,13 +413,6 @@ function removeFromList($list, $ItemToRemove)
 
 # ---------------------------------------------------------
 
-// Used only in processMessageTags()
-function nullToString($thing) {
-    if (is_null($thing)) {
-        $thing = "";
-    }
-}
-
 function processMessageTags()
 {
     global $Send_Subject, $DB_Real_TimeJoined;
@@ -430,10 +430,11 @@ function processMessageTags()
     Some of the above values are explicitly set to non-null values during this function.
     Not all these may be necessary, but time constraints during the 2023 Lightsys Code-a-thon make researching the other mentions of these variables impractical.
     */
+    nullToString($Send_Subject); nullToString($DB_Real_TimeJoined);
     nullToString($DB_EmailAddress); nullToString($DB_LastActivity); nullToString($DB_FirstName);
     nullToString($DB_LastName); nullToString($DB_ResponderName); nullToString($DB_OwnerEmail);
     nullToString($DB_OwnerName); nullToString($DB_ReplyToEmail); nullToString($DB_ResponderDesc);
-    nullToString($DB_MsgSub);
+    nullToString($DB_MsgBodyHTML); nullToString($DB_MsgBodyText); nullToString($DB_MsgSub);
     nullToString($UnsubURL); nullToString($siteURL);
     nullToString($ResponderDirectory); nullToString($DB_SubscriberID);
     nullToString($DB_IPaddy); nullToString($DB_ReferralSource);
