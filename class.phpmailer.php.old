@@ -1,4 +1,7 @@
 <?php
+// This file replaced by the updated src/PHPMailer.php, which is compatible with PHP 8.2.
+// Some potential PHP 8.2 compatibility modifications in comments remain in this file.
+
 /**
  * PHPMailer - PHP email creation and transport class.
  * PHP Version 5
