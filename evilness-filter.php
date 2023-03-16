@@ -44,13 +44,9 @@ function removeEvilAttributes($tagSource)
     return stripslashes(preg_replace("/$stripAttrib/i", 'forbidden', $tagSource));
 }
 
-/* Since PHP 5.4, get_magic_quotes_pgc has always returned "false".
-   With that in mind, "myaddslashes()" has no practical difference from simply "addslashes()", so all instances of "myaddslashes($st)" are replaced with "addslashes($st)".
-// Delete this comment and commented function. I checked for other usages of "myaddslashes()" in the code and found none, but do confirm that yourself.
-// function myaddslashes($st)
-// {
-//     return addslashes($st);
-// }
+// Since PHP 5.4, get_magic_quotes_pgc has always returned "false".
+// With that in mind, "myaddslashes()" had no practical difference from simply "addslashes()",
+// so all instances of "myaddslashes($st)" are replaced with "addslashes($st)".
 
 function makeSafe($UnsafeSource)
 {
@@ -60,25 +56,6 @@ function makeSafe($UnsafeSource)
 function makeSemiSafe($UnsafeSource)
 {
     return addslashes(removeEvilTags(trim($UnsafeSource)));
-}
-*/
-function myaddslashes($st)
-{
-    if (get_magic_quotes_gpc()) {
-        return $st;
-    } else {
-        return addslashes($st);
-    }
-}
-
-function makeSafe($UnsafeSource)
-{
-    return myaddslashes(htmlspecialchars(removeEvilTags(trim($UnsafeSource)), ENT_QUOTES));
-}
-
-function makeSemiSafe($UnsafeSource)
-{
-    return myaddslashes(removeEvilTags(trim($UnsafeSource)));
 }
 
 # Will output: <a href="forbiddenalert(1);" target="_blank" forbidden =" alert(1)">test</a>
