@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 //     along with Olam Autoresponder.  If not, see <http://www.gnu.org/licenses/>.
 
-// PHP 8.1 deprecated passing null to string parameters. This function is used in getResponderInfo() and processMessageTags().
+// PHP 8.1 deprecated passing null to string parameters. This function is used in makeSafe() and makeSemiSafe().
 function nullToString($thing) {
     if (is_null($thing)) {
         $thing = "";
@@ -57,12 +57,12 @@ function removeEvilAttributes($tagSource)
 
 function makeSafe($UnsafeSource)
 {
-    return addslashes(htmlspecialchars(removeEvilTags(trim($UnsafeSource)), ENT_QUOTES));
+    return addslashes(htmlspecialchars(removeEvilTags(trim(nullToString($UnsafeSource))), ENT_QUOTES));
 }
 
 function makeSemiSafe($UnsafeSource)
 {
-    return addslashes(removeEvilTags(trim($UnsafeSource)));
+    return addslashes(removeEvilTags(trim(nullToString($UnsafeSource))));
 }
 
 # Will output: <a href="forbiddenalert(1);" target="_blank" forbidden =" alert(1)">test</a>
