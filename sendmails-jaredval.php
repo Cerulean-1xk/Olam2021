@@ -22,9 +22,9 @@ if (isset($_REQUEST['silent']) && $_REQUEST['silent'] == "1") {
 }
 
 include_once 'common.php';
-require_once 'class.phpmailer.php';
+// require_once 'class.phpmailer.php'; // Old directory for file.
 // New PHPMailer version uses different directory:
-// require_once 'src/PHPMailer.php';
+require_once 'src/PHPMailer.php';
 
 if ($silent != TRUE) {
     print "<html>\n";
