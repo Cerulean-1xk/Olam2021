@@ -408,7 +408,7 @@ function removeFromList($list, $ItemToRemove)
 
 // Used only in processMessageTags()
 function nullToString($thing) {
-    if (isNull($thing)) {
+    if (is_null($thing)) {
         $thing = "";
     }
 }
