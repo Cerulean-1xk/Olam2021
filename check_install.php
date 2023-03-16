@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 //     along with Olam Autoresponder.  If not, see <http://www.gnu.org/licenses/>.
 
-// Reviewed for PHP 8.2 compatibility by Titus Hall during the 2023 Lightsys Code-a-thon.
+// Reviewed for PHP 8.2 compatibility during the 2023 Lightsys Code-a-thon.
 
 # Does the config table exist?
 $query = "SHOW TABLES LIKE 'InfResp_config'";
