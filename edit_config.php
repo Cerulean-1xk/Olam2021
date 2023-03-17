@@ -67,6 +67,11 @@ if (userIsLoggedIn() || $config['admin_pass'] == '') {
         if ($form['last_activity_trim'] > 120) {
             $form['last_activity_trim'] = 0;
         }
+        // Addition
+        if (!(is_numeric($form['max_send_count']))) {
+            $form['max_send_count'] = 500;
+        }
+        // Addition
 
         // Save the data
         dbUpdateArray('InfResp_config', $form);
