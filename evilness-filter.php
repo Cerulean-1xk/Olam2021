@@ -15,14 +15,6 @@
 // You should have received a copy of the GNU General Public License
 //     along with Olam Autoresponder.  If not, see <http://www.gnu.org/licenses/>.
 
-// PHP 8.1 deprecated passing null to string parameters. This function is used in makeSafe() and makeSemiSafe().
-/*
-function nullToString($thing) {
-    if (is_null($thing)) {
-        $thing = "";
-    }
-}
-*/
 
 /**
  * Allow these tags
