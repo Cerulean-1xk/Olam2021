@@ -11,9 +11,9 @@
 
 # Database information goes here. Server, user, password and database. Camden Salser
 $MySQL_server   = 'localhost';
-$MySQL_user     = 'infinite';
-$MySQL_password = '5tH7w34GlU';
-$MySQL_database = 'infinite';
+$MySQL_user     = 'user';
+$MySQL_password = 'password';
+$MySQL_database = 'database';
 
 # ------------------------------------------------
 
