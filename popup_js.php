@@ -1,6 +1,3 @@
-// edit 2023 CW
-// no changes to 8.2
-
 <script language="javascript" type="text/javascript">
 <!--
 function popper(url) {
